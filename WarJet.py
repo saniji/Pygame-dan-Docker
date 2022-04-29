@@ -6,12 +6,12 @@ from abc import ABC, abstractmethod
 
 pygame.init()
 
-player_ship = 'player_ship.png'
-enemy_ship = 'enemy1_ship.png'
-boss_ship = 'enemy2_ship.png'
-player_bullet = 'pbullet.png'
-enemy_bullet = 'enemybullet.png'
-boss_bullet = 'bossbullet.png'
+player_ship = 'assets/player_ship.png'
+enemy_ship = 'assets/enemy1_ship.png'
+boss_ship = 'assets/enemy2_ship.png'
+player_bullet = 'assets/pbullet.png'
+enemy_bullet = 'assets/enemybullet.png'
+boss_bullet = 'assets/bossbullet.png'
 
 screen = pygame.display.set_mode((0,0), FULLSCREEN)
 s_width, s_height = screen.get_size()
@@ -59,7 +59,7 @@ class Game(ABC):
 class Background(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		super().__init__()
-		self.image = pygame.image.load('bird.png')
+		self.image = pygame.image.load('assets/bird.png')
 		self.image.set_colorkey('black')
 		self.rect = self.image.get_rect()
 
@@ -190,7 +190,7 @@ class Explosion(pygame.sprite.Sprite):
 		super().__init__()
 		self.img_list = []
 		for i in range(1, 6):
-			img = pygame.image.load(f'exp{i}.png').convert()
+			img = pygame.image.load(f'assets/exp{i}.png').convert()
 			img.set_colorkey('black')
 			img = pygame.transform.scale(img, (120, 120))
 			self.img_list.append(img)
