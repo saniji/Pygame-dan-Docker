@@ -16,3 +16,11 @@ Library yang digunakan untuk Game Jet War
 1. Library Pygame, library utama agar game jet war dapat dimainkan.
 2. Library Random, digunakan untuk manampilkan lawan/musuh secara random atau acak
 3. Abstracmethod, agar dapat menngunakan class abstrak di dalam program game jet war
+
+
+Cara Bermain game Jet War 
+1. Player akan memulai permainan dengan diberikan sebuah jet dan nyawa.
+2. Player menembak pesawat musuh dengan menekan salah satu tombol pada keyboard.
+3. Setiap musuh yang kalah, player akan mendapatkan score sesuai pesawat musuh yang dihancurkan.
+4. Jika player tertembak atau tertabrak oleh pesawat jet musuh, nyawa player akan berkurang 1.
+5. Game akan berakhir jika nyawa player sudah habis.
