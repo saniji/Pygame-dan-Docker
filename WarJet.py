@@ -342,7 +342,7 @@ class PlayGame(Game):
 		for i in hits:
 			self.__count_hit2 += 1
 			if self.__count_hit2 == 20:
-				self.__score += 8
+				self.__score += 5
 				expl_x = i.rect.x + 50
 				expl_y = i.rect.y + 60
 				explosion = Explosion(expl_x, expl_y)
