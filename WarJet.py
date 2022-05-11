@@ -76,11 +76,11 @@ class Background(pygame.sprite.Sprite):
 
 	#fungsi untuk membuat gambar burung bergerak
 	def update(self):
-        	#diawali posisi y dan x 1 lalu bertambah 1 terusmenerus 
+        #diawali posisi y dan x 1 lalu bertambah 1 terusmenerus 
 		#sehingga burung selalu bergerak terusmenerus
 		self.rect.y += 1
 		self.rect.x += 1
-        	#untuk mengembalikan posisi burung keposisi awal jika telah melewati layar 
+        #untuk mengembalikan posisi burung keposisi awal jika telah melewati layar 
 		if self.rect.y > s_height:
 			self.rect.y = random.randrange(-10, 0)
 			self.rect.x = random.randrange(-400, s_width)
@@ -88,7 +88,7 @@ class Background(pygame.sprite.Sprite):
 class Player(pygame.sprite.Sprite):
 	def __init__(self, img):
 		super().__init__()
-        	#atribut yang digunakan kelas player
+        #atribut yang digunakan kelas player
 		#terdapat gambar sebagai karakter dari player
 		#rect sebagai pengatur posisi dan pergerakan playe
 		self.image = pygame.image.load(img)
@@ -139,19 +139,20 @@ class Player(pygame.sprite.Sprite):
 				#peluru akan di aktivkan kembali sehingga dapat menembak kembali
 				self.activate_bullet = True
 
-    	#fungsi shoot untuk mengatur kapan muncul nya peluru 
+    #fungsi shoot untuk mengatur kapan muncul nya peluru 
 	#dan kapan hilang nya peluru
 	def shoot(self):
 		if self.activate_bullet:
-            		#instansiasi kelas player bullet
+            #instansiasi kelas player bullet
 			bullet = PlayerBullet(player_bullet)
+			#untuk efek suara tembakan dari player
 			bullet_sound = mixer.Sound('assets/Audio/shoot.mp3')
 			bullet_sound.play()
-            		#muncul nya peluru akan mengikuti posisi dimana mouse kita berada
+            #muncul nya peluru akan mengikuti posisi dimana mouse kita berada
 			mouse = pygame.mouse.get_pos()
 			bullet.rect.x = mouse[0]
 			bullet.rect.y = mouse[1]
-            		#meload gambar kedalam grub
+            #meload gambar kedalam grub
 			playerbullet_group.add(bullet)
 			sprite_group.add(bullet)
 
@@ -166,15 +167,15 @@ class Player(pygame.sprite.Sprite):
 class Enemy(Player):
 	def __init__(self, img):
 		super().__init__(img)
-        	#atribut yang digunakan
+        #atribut yang digunakan
 		#terdapat rect x dan y untuk mengatur pergerakan dan posisi si musuh
 		self.rect.x = random.randrange(0, s_width)
 		self.rect.y = random.randrange(-500, 0)
 		screen.blit(self.image, (self.rect.x, self.rect.y))
 
-    	#fungsi untuk mengatur pergerakan dan posisi si musuh akan muncul
+    #fungsi untuk mengatur pergerakan dan posisi si musuh akan muncul
 	def update(self):
-        	#posisi y musuh di beri y +=1 maka si musuh akan ergerak terus kebawah
+        #posisi y musuh di beri y +=1 maka si musuh akan ergerak terus kebawah
 		self.rect.y += 1
         	#kondisi jika si musuh telah melewati batas layar game maka pesawat musuh
 		#akan kembali lagi ke atas
@@ -183,14 +184,14 @@ class Enemy(Player):
 			self.rect.y = random.randrange(-2000, 0)
 		self.shoot()
 
-    	#fungsi untuk mengatur kemunculan peluru dan pergerakan peluru musuh
+    #fungsi untuk mengatur kemunculan peluru dan pergerakan peluru musuh
 	def shoot(self):
-        	#peluru musuh diberi kondisi jika posisi y musuh berada di 0, 30, 70, 300, 700
+        #peluru musuh diberi kondisi jika posisi y musuh berada di 0, 30, 70, 300, 700
 		#maka peluru akan muncul
 		if self.rect.y in (0, 30, 70, 300, 700):
-            		#instansiasi kelas EnemyBullet
+            #instansiasi kelas EnemyBullet
 			enemybullet = EnemyBullet(enemy_bullet)
-          		# x dan y di beri nilai sama dengan posisi si pesawat musuh
+          	# x dan y di beri nilai sama dengan posisi si pesawat musuh
 			# x dan y di beri +20 +50 agar peluru muncul tepat di depan pesawat musuh
 			enemybullet.rect.x = self.rect.x + 20
 			enemybullet.rect.y = self.rect.y + 50
@@ -202,19 +203,19 @@ class Enemy(Player):
 class Boss(Enemy):
 	def __init__(self, img):
 		super().__init__(img)
-        	#atribut yang digunakan
+        #atribut yang digunakan
 		#atribut dibawah adalah sebuah nialai untuk mengatur pergerakan pesawat boss
 		self.rect.x = -200 
 		self.rect.y = 200 
 		self.move = 1
 
-    	#fungsi untuk mengatur pergerakan pesawat boss
+    #fungsi untuk mengatur pergerakan pesawat boss
 	def update(self):
-        	#x pesawat bos di eri nilai +1 
+        #x pesawat bos di eri nilai +1 
 		#sehingga boss akan bergerak menyamping
 		#jika nilai x - maka akan bergerak ke kiri begitupun sebalik nya
 		self.rect.x += self.move 
-        	#kondisi jika pesawat boss melebihi layar maka nilai x akan dikali -1
+        #kondisi jika pesawat boss melebihi layar maka nilai x akan dikali -1
 		#sehingga pergerakan secara zigzag 
 		if self.rect.x > s_width + 200:
 			self.move *= -1 
@@ -222,14 +223,14 @@ class Boss(Enemy):
 			self.move *= -1
 		self.shoot()
 
-    	#fungsi untuk mengatur kemunculan peluru dari pesawat boss
+    #fungsi untuk mengatur kemunculan peluru dari pesawat boss
 	def shoot(self):
-        	#kondisi kemunculan peluru jika nilai x dari posisi pesawat di beri modulus 50
+        #kondisi kemunculan peluru jika nilai x dari posisi pesawat di beri modulus 50
 		#dan hasil nya 0 maka peluru akan muncul
 		if self.rect.x % 50 == 0:
-           		#instansiasi dari kelas EnemyBullet
+           	#instansiasi dari kelas EnemyBullet
 			bossbullet = EnemyBullet(boss_bullet)
-            		#sama seperti enemy peluru muncul mengikuti posisi dari pesawat
+            #sama seperti enemy peluru muncul mengikuti posisi dari pesawat
 			# nilai x dan y diberi +50 dan +70 agar peluru tepat muncul di depat pesawat
 			bossbullet.rect.x = self.rect.x + 50
 			bossbullet.rect.y = self.rect.y + 70
@@ -240,7 +241,7 @@ class Boss(Enemy):
 class PlayerBullet(pygame.sprite.Sprite):
 	def __init__(self, img):
 		super().__init__()
-        	#atribut yang digunakan
+        #atribut yang digunakan
 		#terdapat gambar dari peluru itu sendiri
 		#lalu rect adalah sebuah nilai yang dapat mengatur pergerakan dari peluru tersebut
 		self.image = pygame.image.load(img)
@@ -249,10 +250,10 @@ class PlayerBullet(pygame.sprite.Sprite):
 
     	#fungsi untuk mengatur pergerakan peluru
 	def update(self):
-        	#peluru diposisi y di kurang 5 secara terus menerus
+        #peluru diposisi y di kurang 5 secara terus menerus
 		#sehingga peluru akan bergerak terus ke atas
 		self.rect.y -= 5
-        	#jika perluru melebihi layar maka peluru akan dihapus
+        #jika perluru melebihi layar maka peluru akan dihapus
 		if self.rect.y < 0:
 			self.kill()
 
@@ -263,12 +264,12 @@ class EnemyBullet(PlayerBullet):
 		super().__init__(img)
 		self.image.set_colorkey('white')
 
-    	#fungsi untuk mengatur pergerakan peluru
+    #fungsi untuk mengatur pergerakan peluru
 	def update(self):
-       	 	#posisi y dari peluru di beri +3
+       	#posisi y dari peluru di beri +3
 		#sehing peluru akan terus berjalan kearah bawah
 		self.rect.y += 3
-        	#jika peluru melebihi layar maka peluru akan di hapus
+        #jika peluru melebihi layar maka peluru akan di hapus
 		if self.rect.y > s_height:
 			self.kill()
 
@@ -322,7 +323,7 @@ class PlayGame(Game):
 			#jika count_hit mencapai 3 maka pesawat musuh akan meledak
 			#dan akan kembali keposisi semula di awal dia muncul
 			if self.__count_hit == 3:
-				#untuk menghitung score ketika telah menghancurkan pesawat musuh
+				#untuk menambah score ketika telah menghancurkan pesawat musuh
 				self.__score += 1
 				expl_x = i.rect.x + 20
 				expl_y = i.rect.y + 40
