@@ -11,4 +11,8 @@ Player akan diberikan kesempatan hidup kembali, jika player mati ditempak oleh m
 atau menabrak jet musuh maka siplayer akan hidup kembali sesuai kesempatan yang
 diberikan dan jika kesempatan tersebut sudah habis maka game akan selesai.
 
-Libari yang digunakan untuk Game Jet War
+Library yang digunakan untuk Game Jet War
+
+1. Library Pygame, library utama agar game jet war dapat dimainkan.
+2. Library Random, digunakan untuk manampilkan lawan/musuh secara random atau acak
+3. Abstracmethod, agar dapat menngunakan class abstrak di dalam program game jet war
