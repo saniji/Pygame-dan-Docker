@@ -8,12 +8,12 @@ from abc import ABC, abstractmethod		# Modul abstract class
 pygame.init()
 
 # List gambar yang digunakan
-player_ship = 'player_ship.png'
-enemy_ship = 'enemy1_ship.png'
-boss_ship = 'enemy2_ship.png'
-player_bullet = 'pbullet.png'
-enemy_bullet = 'enemybullet.png'
-boss_bullet = 'bossbullet.png'
+player_ship = 'assets/Gambar/player_ship.png'
+enemy_ship = 'assets/Gambar/enemy1_ship.png'
+boss_ship = 'assets/Gambar/enemy2_ship.png'
+player_bullet = 'assets/Gambar/pbullet.png'
+enemy_bullet = 'assets/Gambar/enemybullet.png'
+boss_bullet = 'assets/Gambar/bossbullet.png'
 
 # Mengatur ukuran layar dan frame rate per detik
 screen = pygame.display.set_mode((0,0), FULLSCREEN)
@@ -33,10 +33,7 @@ explosion_group = pygame.sprite.Group()
 sprite_group = pygame.sprite.Group()
 
 # Mengatur font
-pygame.mouse.set_visible(False)
-font = pygame.font.SysFont("assets/font.ttf", 32)
-
-def get_font(size): # Returns Press-Start-2P in the desired size
+def get_font(size): 
     return pygame.font.Font("assets/font.ttf", size)
 
 # Membuat class abstrak dan method abstrak
@@ -70,11 +67,11 @@ class Background(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		super().__init__()
 		# Memberikan backsound dan membuat gambar pada background
-		mixer.music.load('background.wav')
+		mixer.music.load('assets/Audio/background.wav')
 		mixer.music.play(-1)
 		#atribut yang diguakan terdapat gambar burung sebagai tekstur
 		#rect atribut untuk mengatur pergerakan dan letak burung
-		self.image = pygame.image.load('bird.png')
+		self.image = pygame.image.load('assets/Gambar/bird.png')
 		self.image.set_colorkey('black')
 		self.rect = self.image.get_rect()
 
@@ -150,7 +147,7 @@ class Player(pygame.sprite.Sprite):
 		if self.activate_bullet:
             #instansiasi kelas player bullet
 			bullet = PlayerBullet(player_bullet)
-			bullet_sound = mixer.Sound('shoot.mp3')
+			bullet_sound = mixer.Sound('assets/Audio/shoot.mp3')
 			bullet_sound.play()
             #muncul nya peluru akan mengikuti posisi dimana mouse kita berada
 			mouse = pygame.mouse.get_pos()
@@ -283,10 +280,10 @@ class Explosion(pygame.sprite.Sprite):
 		super().__init__()
 		# memberikan efek suara ledakan dan efek animasi saat player, enemy, dan boss mati
 		self.img_list = []
-		explosion_sound = mixer.Sound('explosion.wav')
+		explosion_sound = mixer.Sound('assets/Audio/explosion.wav')
 		explosion_sound.play()
 		for i in range(1, 6):
-			img = pygame.image.load(f'exp{i}.png').convert()
+			img = pygame.image.load(f'assets/Gambar/exp{i}.png').convert()
 			img.set_colorkey('black')
 			img = pygame.transform.scale(img, (120, 120))
 			self.img_list.append(img)
