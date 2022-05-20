@@ -463,9 +463,9 @@ class PlayGame(Game):
 		screen.blit(text, [5,5])
 
 	#untuk mangatur tesk yang ada di layar start
-	def teks_play(self):
+	def teks_start(self):
 		font = get_font(40)
-		text = font.render ('WAR JET', True, 'black')
+		text = font.render ('JET WAR', True, 'black')
 		text_rect = text.get_rect(center = (s_width/2, s_height/2))
 		screen.blit(text, text_rect)
 
@@ -483,7 +483,7 @@ class PlayGame(Game):
 		self.create_background()
 		while True:
 			screen.fill((135, 206, 250))
-			self.teks_play()
+			self.teks_start()
 			self.run_update()
 			for event in pygame.event.get():
 				if event.type == QUIT:
@@ -590,9 +590,6 @@ class PlayGame(Game):
 				if event.type == KEYDOWN:
 					if event.key == K_SPACE:
 						self.player.shoot()
-					if event.key == K_ESCAPE:
-						pygame.quit()
-						quit()
 					
 					if event.key == K_RETURN:
 						self.create_pause()
