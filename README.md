@@ -23,5 +23,5 @@ Cara Bermain game Jet War
 2. Player menembak pesawat musuh dengan menekan tombol 'space' pada keyboard.
 3. Setiap musuh yang kalah, player akan mendapatkan score sesuai pesawat musuh yang dihancurkan.
 4. Jika player tertembak atau tertabrak oleh pesawat jet musuh, nyawa player akan berkurang 1.
-5. Jika player ingin melakukan pause game tekan tombol 'P' (Lalu jika ingin melanjutkan tekan 'C' dan 'Q' untuk keluar).
+5. Jika player ingin melakukan pause game tekan tombol 'enter' (Lalu jika ingin melanjutkan tekan 'enter' dan 'esc' untuk keluar).
 5. Game akan berakhir jika nyawa player sudah habis atau dengan menekan tombol 'esc' untuk keluar dari game.
