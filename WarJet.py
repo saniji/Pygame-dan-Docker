@@ -1,18 +1,19 @@
-import random					# Memunculkan enemy secara random
-import pygame					# Memunculkan background
-from pygame import mixer			# Mengeload background music
-from pygame.locals import *			# Untuk membuat layar fullscreen
+import random							# Memunculkan enemy secara random
+import pygame							# Memunculkan background
+from pygame import mixer				# Mengeload background music
+from pygame.locals import *				# Untuk membuat layar fullscreen
 from abc import ABC, abstractmethod		# Modul abstract class
+
 
 pygame.init()
 
 # List gambar yang digunakan
-player_ship = 'assets/Gambar/player_ship.png'
-enemy_ship = 'assets/Gambar/enemy1_ship.png'
-boss_ship = 'assets/Gambar/enemy2_ship.png'
-player_bullet = 'assets/Gambar/pbullet.png'
-enemy_bullet = 'assets/Gambar/enemybullet.png'
-boss_bullet = 'assets/Gambar/bossbullet.png'
+player_ship = 'player_ship.png'
+enemy_ship = 'enemy1_ship.png'
+boss_ship = 'enemy2_ship.png'
+player_bullet = 'pbullet.png'
+enemy_bullet = 'enemybullet.png'
+boss_bullet = 'bossbullet.png'
 
 # Mengatur ukuran layar dan frame rate per detik
 screen = pygame.display.set_mode((0,0), FULLSCREEN)
@@ -33,7 +34,10 @@ sprite_group = pygame.sprite.Group()
 
 # Mengatur font
 pygame.mouse.set_visible(False)
-font = pygame.font.SysFont('freesansbold.ttf', 32)
+font = pygame.font.SysFont("assets/font.ttf", 32)
+
+def get_font(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets/font.ttf", size)
 
 # Membuat class abstrak dan method abstrak
 class Game(ABC):
@@ -66,11 +70,11 @@ class Background(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		super().__init__()
 		# Memberikan backsound dan membuat gambar pada background
-		mixer.music.load('assets/Audio/background.wav')
+		mixer.music.load('background.wav')
 		mixer.music.play(-1)
 		#atribut yang diguakan terdapat gambar burung sebagai tekstur
 		#rect atribut untuk mengatur pergerakan dan letak burung
-		self.image = pygame.image.load('assets/Gambar/bird.png')
+		self.image = pygame.image.load('bird.png')
 		self.image.set_colorkey('black')
 		self.rect = self.image.get_rect()
 
@@ -84,6 +88,7 @@ class Background(pygame.sprite.Sprite):
 		if self.rect.y > s_height:
 			self.rect.y = random.randrange(-10, 0)
 			self.rect.x = random.randrange(-400, s_width)
+
 #kelas player untuk mengatur semua pergerakan yang dilakukan playe
 class Player(pygame.sprite.Sprite):
 	def __init__(self, img):
@@ -145,8 +150,7 @@ class Player(pygame.sprite.Sprite):
 		if self.activate_bullet:
             #instansiasi kelas player bullet
 			bullet = PlayerBullet(player_bullet)
-			#untuk efek suara tembakan dari player
-			bullet_sound = mixer.Sound('assets/Audio/shoot.mp3')
+			bullet_sound = mixer.Sound('shoot.mp3')
 			bullet_sound.play()
             #muncul nya peluru akan mengikuti posisi dimana mouse kita berada
 			mouse = pygame.mouse.get_pos()
@@ -177,7 +181,7 @@ class Enemy(Player):
 	def update(self):
         #posisi y musuh di beri y +=1 maka si musuh akan ergerak terus kebawah
 		self.rect.y += 1
-        	#kondisi jika si musuh telah melewati batas layar game maka pesawat musuh
+        #kondisi jika si musuh telah melewati batas layar game maka pesawat musuh
 		#akan kembali lagi ke atas
 		if self.rect.y > s_height:
 			self.rect.x = random.randrange(0, s_width)
@@ -191,7 +195,7 @@ class Enemy(Player):
 		if self.rect.y in (0, 30, 70, 300, 700):
             #instansiasi kelas EnemyBullet
 			enemybullet = EnemyBullet(enemy_bullet)
-          	# x dan y di beri nilai sama dengan posisi si pesawat musuh
+            # x dan y di beri nilai sama dengan posisi si pesawat musuh
 			# x dan y di beri +20 +50 agar peluru muncul tepat di depan pesawat musuh
 			enemybullet.rect.x = self.rect.x + 20
 			enemybullet.rect.y = self.rect.y + 50
@@ -228,7 +232,7 @@ class Boss(Enemy):
         #kondisi kemunculan peluru jika nilai x dari posisi pesawat di beri modulus 50
 		#dan hasil nya 0 maka peluru akan muncul
 		if self.rect.x % 50 == 0:
-           	#instansiasi dari kelas EnemyBullet
+            #instansiasi dari kelas EnemyBullet
 			bossbullet = EnemyBullet(boss_bullet)
             #sama seperti enemy peluru muncul mengikuti posisi dari pesawat
 			# nilai x dan y diberi +50 dan +70 agar peluru tepat muncul di depat pesawat
@@ -248,7 +252,7 @@ class PlayerBullet(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.image.set_colorkey('black')
 
-    	#fungsi untuk mengatur pergerakan peluru
+    #fungsi untuk mengatur pergerakan peluru
 	def update(self):
         #peluru diposisi y di kurang 5 secara terus menerus
 		#sehingga peluru akan bergerak terus ke atas
@@ -266,7 +270,7 @@ class EnemyBullet(PlayerBullet):
 
     #fungsi untuk mengatur pergerakan peluru
 	def update(self):
-       	#posisi y dari peluru di beri +3
+        #posisi y dari peluru di beri +3
 		#sehing peluru akan terus berjalan kearah bawah
 		self.rect.y += 3
         #jika peluru melebihi layar maka peluru akan di hapus
@@ -279,10 +283,10 @@ class Explosion(pygame.sprite.Sprite):
 		super().__init__()
 		# memberikan efek suara ledakan dan efek animasi saat player, enemy, dan boss mati
 		self.img_list = []
-		explosion_sound = mixer.Sound('assets/Audio/explosion.wav')
+		explosion_sound = mixer.Sound('explosion.wav')
 		explosion_sound.play()
 		for i in range(1, 6):
-			img = pygame.image.load(f'assets/Gambar/exp{i}.png').convert()
+			img = pygame.image.load(f'exp{i}.png').convert()
 			img.set_colorkey('black')
 			img = pygame.transform.scale(img, (120, 120))
 			self.img_list.append(img)
@@ -312,6 +316,9 @@ class PlayGame(Game):
 		self.__count_hit2 = 0
 		self.__lives = 3
 		self.__score = 0
+		self.pause_objek = True
+
+		self.create_start()
 
 	#fungsi untuk membuat pesawat musuh menghilang ketika terkena peluru player
 	def playerbullet_hits_enemy(self):
@@ -323,7 +330,7 @@ class PlayGame(Game):
 			#jika count_hit mencapai 3 maka pesawat musuh akan meledak
 			#dan akan kembali keposisi semula di awal dia muncul
 			if self.__count_hit == 3:
-				#untuk menambah score ketika telah menghancurkan pesawat musuh
+				#untuk menghitung score ketika telah menghancurkan pesawat musuh
 				self.__score += 1
 				expl_x = i.rect.x + 20
 				expl_y = i.rect.y + 40
@@ -345,7 +352,7 @@ class PlayGame(Game):
 		for i in hits:
 			self.__count_hit2 += 1
 			if self.__count_hit2 == 20:
-				self.__score += 5
+				self.__score += 8
 				expl_x = i.rect.x + 50
 				expl_y = i.rect.y + 60
 				explosion = Explosion(expl_x, expl_y)
@@ -454,13 +461,92 @@ class PlayGame(Game):
 
 	# menampilkan score pada layar
 	def create_score(self):
-		text = font.render("Score: " + str(self.__score), True, (255,255,255))
-		screen.blit(text, [0,0])
+		font = get_font(20)
+		text = font.render("Score: " + str(self.__score), True, ('black'))
+		screen.blit(text, [5,5])
+
+	#untuk mangatur tesk yang ada di layar start
+	def teks_play(self):
+		font = get_font(40)
+		text = font.render ('WAR JET', True, 'black')
+		text_rect = text.get_rect(center = (s_width/2, s_height/2))
+		screen.blit(text, text_rect)
+
+		font = get_font(25)
+		text1 = font.render ('Press enter to start or esc to exit', True, 'black')
+		text_rect1 = text1.get_rect(center = (s_width/2, s_height/2+55))
+		screen.blit(text1, text_rect1)
+
+		pesawat = pygame.image.load('player_ship.png')
+		pesawat_rect = pesawat.get_rect(center = (s_width/2, s_height/2-70))
+		screen.blit( pesawat, pesawat_rect)
+
+	#mengatur tombol yang ada di layar start
+	def create_start(self):
+		self.create_background()
+		while True:
+			screen.fill((135, 206, 250))
+			self.teks_play()
+			self.run_update()
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					pygame.quit()
+					quit()
+				
+				if event.type == KEYDOWN:
+					if event.key == K_ESCAPE:
+						pygame.quit()
+						quit()
+				
+					if event.key == K_RETURN:
+						self.run_game()
+
+			pygame.display.update()
+	
+	#mengatur teks yang ada di layar pause
+	def teks_pause(self):
+		font = get_font(40)
+		text = font.render ('PAUSE', True, 'black')
+		text_rect = text.get_rect(center = (s_width/2, s_height/2))
+		screen.blit(text, text_rect)
+
+		font = get_font(25)
+		text1 = font.render ('Press enter to continue or esc to exit', True, 'black')
+		text_rect1 = text1.get_rect(center = (s_width/2, s_height/2+55))
+		screen.blit(text1, text_rect1)
+
+	#mengatur tombol yang ada di layar pause
+	def create_pause(self):
+		self.pause_objek = False
+		while True:
+			self.teks_pause()
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					pygame.quit()
+					quit()
+				
+				if event.type == KEYDOWN:
+					if event.key == K_ESCAPE:
+						pygame.quit()
+						quit()
+				
+					if event.key == K_RETURN:
+						self.run_game()
+
+			pygame.display.update() 
+
+                                    
 
 	# Kondisi jika game telah berakhir
 	def create_game_over(self):
 		#jika nyawa dari player kurang dari 0 maka akan menampilkan game over
 		if self.__lives < 0:
+			font = get_font(40)
+			text_gameover = font.render ('GAME OVER', True, 'black')
+			text_rect_gameover = text_gameover.get_rect(center = (s_width/2, s_height/2))
+			screen.blit(text_gameover, text_rect_gameover)
+
+			font = get_font(20)
 			#jika score nya kurang dari 30
 			if self.__score < 30:
 				self.text = font.render("Kamu Terlalu Cupu score kamu : " +str(self.__score), True, (0,0,0))
@@ -469,10 +555,11 @@ class PlayGame(Game):
 				self.text = font.render("Kamu Hebat Banget score kamu : " +str(self.__score), True, (0,0,0))
 			#pengaturan tampilan dari layar game over
 			self.text_rect = self.text.get_rect()
-			self.text_rect.center = (s_width/2, s_height/2)
+			self.text_rect.center = (s_width/2, s_height/2+55)
 			screen.blit(self.text, self.text_rect)
+
 			pygame.display.update()
-			pygame.time.delay(3000) 
+			pygame.time.delay(8000) 
 			pygame.quit()
 		
 	# Menampilkan gambar burung dan membuatnya bergerak
@@ -482,10 +569,10 @@ class PlayGame(Game):
 
 	# Menjalankan game
 	def run_game(self):
-		self.create_background()
-		self.create_player()
-		self.create_enemy()
-		self.create_boss()
+		if self.pause_objek:
+			self.create_player()
+			self.create_enemy()
+			self.create_boss()
 		while True:
 			screen.fill((135, 206, 250))
 			self.playerbullet_hits_enemy()
@@ -509,6 +596,10 @@ class PlayGame(Game):
 					if event.key == K_ESCAPE:
 						pygame.quit()
 						quit()
+					
+					if event.key == K_RETURN:
+						self.create_pause()
+					
 
 			pygame.display.update()
 			clock.tick(FPS)
