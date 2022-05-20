@@ -474,7 +474,7 @@ class PlayGame(Game):
 		text_rect1 = text1.get_rect(center = (s_width/2, s_height/2+55))
 		screen.blit(text1, text_rect1)
 
-		pesawat = pygame.image.load('player_ship.png')
+		pesawat = pygame.image.load('assets/Gambar/player_ship.png')
 		pesawat_rect = pesawat.get_rect(center = (s_width/2, s_height/2-70))
 		screen.blit( pesawat, pesawat_rect)
 
