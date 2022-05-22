@@ -525,6 +525,7 @@ class PlayGame(Game):
 						quit()
 				
 					if event.key == K_RETURN:
+						mixer.music.play()
 						self.run_game()
 
 			pygame.display.update() 
@@ -587,6 +588,7 @@ class PlayGame(Game):
 						self.player.shoot()
 					
 					if event.key == K_RETURN:
+						mixer.music.stop()
 						self.create_pause()
 						
 					if event.key == K_ESCAPE:
