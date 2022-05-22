@@ -315,8 +315,6 @@ class PlayGame(Game):
 		self.__score = 0
 		self.pause_objek = True
 
-		self.create_start()
-
 	#fungsi untuk membuat pesawat musuh menghilang ketika terkena peluru player
 	def playerbullet_hits_enemy(self):
 		hits = pygame.sprite.groupcollide(enemy_group, playerbullet_group, False, True)
@@ -349,7 +347,7 @@ class PlayGame(Game):
 		for i in hits:
 			self.__count_hit2 += 1
 			if self.__count_hit2 == 20:
-				self.__score += 8
+				self.__score += 5
 				expl_x = i.rect.x + 50
 				expl_y = i.rect.y + 60
 				explosion = Explosion(expl_x, expl_y)
@@ -425,7 +423,6 @@ class PlayGame(Game):
 			background_image.rect.y = random.randrange(0, s_height)
 			background_group.add(background_image)
 			sprite_group.add(background_image)
-
 
 	# Menampilkan gambar player pada layar
 	def create_player(self):
@@ -531,9 +528,7 @@ class PlayGame(Game):
 						self.run_game()
 
 			pygame.display.update() 
-
                                     
-
 	# Kondisi jika game telah berakhir
 	def create_game_over(self):
 		#jika nyawa dari player kurang dari 0 maka akan menampilkan game over
@@ -593,9 +588,12 @@ class PlayGame(Game):
 					
 					if event.key == K_RETURN:
 						self.create_pause()
+						
+					if event.key == K_ESCAPE:
+						pygame.quit()
+						quit()
 					
-
 			pygame.display.update()
 			clock.tick(FPS)
 
-PlayGame().run_game()
+PlayGame().create_start()
