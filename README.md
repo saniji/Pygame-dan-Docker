@@ -1,9 +1,8 @@
 Nama Kelompok:
-             - Fajar Maulana     120140136
-             - Nurul Fikri       120140053
-             - Edo Sani          120140179
-             - Kafindo Ebenov S  120140198
-
+<ol>
+  <li> Fajar Maulana        120140136
+    </li>
+  <li> Nurul Fikri          120140053
 Game Jet War
 
 Deskripsi Game Jet War
