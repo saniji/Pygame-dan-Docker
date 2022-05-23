@@ -1,7 +1,7 @@
 Nama Kelompok:
 <ol>
-  <li>Fajar Maulana       120140136</li>
-  <li>Nurul Fikri         120140053</li>
+  <li>Fajar Maulana ## 120140136</li>
+  <li>Nurul Fikri ## 120140053</li>
   <li>Edo Sani            120140179</li>
   <li>Kafindo Ebeno S     120140198</li>
 </ol>
