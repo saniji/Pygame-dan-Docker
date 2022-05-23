@@ -35,4 +35,4 @@ Cara Bermain game Jet War
 
 UML Class Diagram
 
-![The San Juan Mountains are beautiful!](/assets/Diagram UML.png "San Juan Mountains")
+![Diagram UML](https://user-images.githubusercontent.com/94836508/169818741-0db22dc9-4191-476b-9701-da2833535e1d.png)
