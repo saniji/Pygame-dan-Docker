@@ -1,4 +1,9 @@
-# Tugas-Besar-PBO
+Nama Kelompok:
+              Fajar Maulana     120140136
+              Nurul Fikri       120140053
+              Edo Sani          120140179
+              Kafindo Ebenov S  120140198
+
 Game Jet War
 
 Deskripsi Game Jet War
