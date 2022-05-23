@@ -32,3 +32,7 @@ Cara Bermain game Jet War
 4. Jika player tertembak atau tertabrak oleh pesawat jet musuh, nyawa player akan berkurang 1.
 5. Jika player ingin melakukan pause game tekan tombol 'enter' (Lalu jika ingin melanjutkan tekan 'enter' dan 'esc' untuk keluar).
 5. Game akan berakhir jika nyawa player sudah habis atau dengan menekan tombol untuk pause yaitu 'enter lalu menekan tombol 'esc' untuk keluar dari game.
+
+UML Class Diagram
+
+![The San Juan Mountains are beautiful!](/assets/Diagram UML.png "San Juan Mountains")
