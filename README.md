@@ -8,7 +8,7 @@
 
 ## Game Jet War
 
-Deskripsi Game Jet War
+## Deskripsi Game Jet War
 
 Jet war merupakan permainan yang dimainkan oleh satu player dengan menggerakkan
 pesawat jetnya yang bertujuan untuk menghindari tembakan dari pesawat musuh
@@ -18,14 +18,15 @@ Player akan diberikan kesempatan hidup kembali, jika player mati ditempak oleh m
 atau menabrak jet musuh maka siplayer akan hidup kembali sesuai kesempatan yang
 diberikan dan jika kesempatan tersebut sudah habis maka game akan selesai.
 
-Library yang digunakan untuk Game Jet War
+## Library yang digunakan untuk Game Jet War
 
 1. Library Pygame, library utama agar game jet war dapat dimainkan.
 2. Library Random, digunakan untuk manampilkan lawan/musuh secara random atau acak
 3. Abstracmethod, agar dapat menngunakan class abstrak di dalam program game jet war
 
 
-Cara Bermain game Jet War 
+## Cara Bermain game Jet War
+
 1. Player akan memulai permainan dengan diberikan sebuah jet dan nyawa.
 2. Player menembak pesawat musuh dengan menekan tombol 'space' pada keyboard.
 3. Setiap musuh yang kalah, player akan mendapatkan score sesuai pesawat musuh yang dihancurkan.
@@ -33,6 +34,7 @@ Cara Bermain game Jet War
 5. Jika player ingin melakukan pause game tekan tombol 'enter' (Lalu jika ingin melanjutkan tekan 'enter' dan 'esc' untuk keluar).
 5. Game akan berakhir jika nyawa player sudah habis atau dengan menekan tombol untuk pause yaitu 'enter lalu menekan tombol 'esc' untuk keluar dari game.
 
-UML Class Diagram
+## UML Class Diagram
 
-![Diagram UML](https://user-images.githubusercontent.com/94836508/169818741-0db22dc9-4191-476b-9701-da2833535e1d.png)
+<p align="center">
+   <![Diagram UML]("https://user-images.githubusercontent.com/94836508/169818741-0db22dc9-4191-476b-9701-da2833535e1d.png" width="300">
