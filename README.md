@@ -1,12 +1,12 @@
-Nama Kelompok:
-<ol>
-  <li>Fajar Maulana 120140136</li>
-  <li>Nurul Fikri 120140053</li>
-  <li>Edo Sani 120140179</li>
-  <li>Kafindo Ebenov Simbolon 120140198</li>
-</ol>
+## Nama dan NIM Anggota Kelompok
+| Nama | NIM | Github |
+| :---: | :---: | :---: |
+| Fajar Maulana              | 120140136 | [fajarm19](https://github.com/fajarm19)           |
+| Nurul Fikri                | 120140053 | [Fikrii12](https://github.com/Fikrii12)           |
+| Edo Sani                   | 120140179 | [saniji](https://github.com/saniji)     |
+| Kafindo Ebenov Simbolon    | 120140109 | [KafeSimbolon](https://github.com/KafESimbolon)                 |
 
-Game Jet War
+## Game Jet War
 
 Deskripsi Game Jet War
 
