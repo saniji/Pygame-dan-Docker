@@ -55,6 +55,10 @@ diberikan dan jika kesempatan tersebut sudah habis maka game akan selesai.
 ```
 docker build -t pygame_python .
 ```
+- Setelah container selesai dibuat, kita dapat mengeceknya apakah container tersebut berhasil atau tidak dengan cara
+```
+docker images
+```
 - Lalu jalankan container docker dengan perintah berikut
 ```
 docker run --rm -it -e DISPLAY=172.19.192.1:0.0 -v c/users/sani1/downloads/dockerwarjet:/home/user pygame_python /bin/bash
