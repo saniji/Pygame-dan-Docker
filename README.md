@@ -46,7 +46,7 @@ diberikan dan jika kesempatan tersebut sudah habis maka game akan selesai.
 <img src="assets/vcxsrv.png" alt="image can't be load" />
 </div>
 
-- Selanjutnya buka terminal dan masuk ke directory tempat file tersimpan, seperti berikut
+- Selanjutnya buka terminal dan masuk ke directory tempat file tersimpan, contohnya seperti ini
 <div align="center"> 
 <img src="assets/directory.png" alt="image can't be load" />
 </div>
