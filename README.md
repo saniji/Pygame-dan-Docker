@@ -45,3 +45,30 @@ diberikan dan jika kesempatan tersebut sudah habis maka game akan selesai.
 <div align="center"> 
 <img src="assets/vcxsrv.png" alt="image can't be load" />
 </div>
+
+- Selanjutnya buka terminal dan masuk ke directory tempat file tersimpan, seperti berikut
+<div align="center"> 
+<img src="assets/directory.png" alt="image can't be load" />
+</div>
+
+- Sebelum membuat docker container, pastikan docker sudah running dan jalankan syntax berikut pada terminal
+```
+docker build -t pygame_python .
+```
+- Lalu jalankan container docker dengan perintah berikut
+```
+docker run --rm -it -e DISPLAY=172.19.192.1:0.0 -v c/users/sani1/downloads/dockerwarjet:/home/user pygame_python /bin/bash
+```
+- Pada bagian "Display=172.19.1" diganti sesuai dengan IPvd Address laptop kalian
+- Pada bagian "c/users/sani1/downloads/dockerwarjet" diganti sesuai letak file kalian
+- Lalu ketik `ls` untuk melihat file yang ada di dalam container, jika build sukses maka terlihat beberapa file dari program game ini
+- Terakhir jalankan syntax berikut untuk memulai game
+```
+python WarJet.py
+```
+atau dengan
+```
+python3 WarJet.py
+```
+
+## Video Demo Pygame Dengan Container Docker
