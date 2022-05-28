@@ -77,4 +77,4 @@ python3 WarJet.py
 
 ## Video Demo Pygame Dengan Container Docker
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/NiMwvtlHujY/0.jpg)](https://www.youtube.com/watch?v=NiMwvtlHujY)
+[![Run Pygame With Docker Container](https://img.youtube.com/vi/NiMwvtlHujY/0.jpg)](https://www.youtube.com/watch?v=NiMwvtlHujY)
